@@ -33,7 +33,7 @@ var Queue = function() {
 
   // return the length of the obj
   someInstance.size = function() {
-    if(finalSize <= 0) {
+    if (finalSize <= 0) {
       return 0;
     } else {
       return finalSize;
