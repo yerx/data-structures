@@ -17,15 +17,12 @@ var counter = 0;
 stackMethods.push = function(value) {
   this[counter] = value;
   counter++;
-  console.log('push', counter);
 };
 
 stackMethods.pop = function() {
   var lastItem = this[counter - 1];
   delete this[counter - 1];
   counter--;
-  console.log('pop', counter);
-  console.log('lastItem', lastItem);
   return lastItem;
 };
 
@@ -33,7 +30,6 @@ stackMethods.size = function() {
   if (counter <= 0) {
     return 0;
   } else {
-    console.log('final', counter);
     return counter;
   }
 };
