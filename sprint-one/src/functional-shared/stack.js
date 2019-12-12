@@ -4,8 +4,10 @@ var Stack = function() {
   var newStack = {};
 
   _.extend(newStack, stackMethods);
-  return newStack;
 
+  counter = 0;
+
+  return newStack;
 };
 
 var stackMethods = {};
