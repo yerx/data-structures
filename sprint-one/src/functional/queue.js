@@ -5,7 +5,7 @@ var Queue = function() {
   var storage = {};
 
   var counter = 0;
-  var firstItem = 0;
+  var firstItem = 1;
   var finalSize = 0;
 
   // example: {0: value1, 1: value2} | counter = 0 | counter++ | Output counter = 1
@@ -16,28 +16,30 @@ var Queue = function() {
 
   // add to the back of the obj
   someInstance.enqueue = function(value) {
-    someInstance[counter] = value;
+    // Add to queue number
     counter++;
+    // Add key-value pair key represents where are you in line; and value is your 'name'
+    storage[counter] = value;
+    // Increase the size to our queue
     finalSize++;
   };
 
   // remove the first key value pair in obj
 
   someInstance.dequeue = function() {
-    var lastQueue = someInstance[firstItem];
-    delete someInstance[firstItem];
-    firstItem++;
-    finalSize--;
-    return lastQueue;
+    // If there is no queue, don't do anything. But if there is, do the following:
+    if (finalSize > 0) {
+      var lastQueue = storage[firstItem];
+      delete storage[firstItem];
+      firstItem++;
+      finalSize--;
+      return lastQueue;
+    }
   };
 
   // return the length of the obj
   someInstance.size = function() {
-    if (finalSize <= 0) {
-      return 0;
-    } else {
-      return finalSize;
-    }
+    return finalSize;
   };
 
   return someInstance;

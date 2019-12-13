@@ -7,34 +7,29 @@ var Stack = function() {
   var counter = 0;
   // Implement the methods below
   someInstance.push = function(value) {
-    // add to storage
-    // [counter] = value. Output: {0: value, 1: value1}
-    someInstance[counter] = value;
     // counter++;
     counter++;
+    // add to storage [counter] = value. Output: {0: value, 1: value1}
+    storage[counter] = value;
   };
 
 
   // deletes the last item
   someInstance.pop = function() {
-    var lastItem = someInstance[counter - 1]; //someInstance[1]
-    // delete storage[counter]
-    delete someInstance[counter - 1];
-    // counter--
-    counter--;
-    // return lastItem
-    return lastItem;
+    if (counter > 0) {
+      var lastItem = storage[counter]; //someInstance[1]
+      // delete storage[counter]
+      delete storage[counter];
+      // counter--
+      counter--;
+      // return lastItem
+      return lastItem;
+    }
   };
 
   someInstance.size = function() {
-    // if the stack is empty
-    if (counter <= 0) {
-      return 0;
-    } else if (counter > 0) {
-    // otherwise,
-      return counter;
-    }
+    return counter;
   };
-  return someInstance;
 
+  return someInstance;
 };

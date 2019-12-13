@@ -1,37 +1,37 @@
 var Stack = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
-  this;
-  counter = 0;
+  // this = Object.create(Stack.prototype);
+  this.storage = {};
+  this.counter = 0;
 };
 
-var counter = 0;
-
 Stack.prototype.push = function(value) {
-  this[counter] = value;
-  counter++;
-  console.log('push', counter);
+  // increment the value of this.counter by 1
+  this.counter++; // counter = 1
+  // within storage, create a key-value pair {1: 'a'}
+  this.storage[this.counter] = value;
 };
 
 Stack.prototype.pop = function() {
-  var lastItem = this[counter - 1];
-  delete this[counter - 1];
-  counter--;
-  console.log('pop', counter);
-  console.log('lastItem', lastItem);
-  return lastItem;
+  if (this.counter > 0) {
+    var lastItem = this.storage[this.counter]; // if push has been invoked once: output: 'a'
+    delete this.storage[this.counter]; // if push has been invoked once: {1: 'a'} no longer exists
+
+    this.counter--; // Output: 1-1 = 0
+
+    return lastItem;
+  }
+  // If pop is the first function invoked,
+  // counter starts at 0, and we don't want it to go to a negative, so we do nothing
+  // and pop returns undefined
 };
 
 Stack.prototype.size = function() {
-  if (counter <= 0) {
-    return 0;
-  } else {
-    console.log('final', counter);
-    return counter;
-  }
+  return this.counter;
 };
 
-var NewStack = new Stack();
+var plates = new Stack();
 
 
 
