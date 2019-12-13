@@ -3,11 +3,11 @@ var Stack = function() {
 
   // Use an object with numeric keys to store values
   var storage = {};
-  // create a counter variable, and start it at 0
+  // create a counter variable, and start it at 0.
   var counter = 0;
   // Implement the methods below
   someInstance.push = function(value) {
-    // counter++;
+    // increment counter;
     counter++;
     // add to storage [counter] = value. Output: {0: value, 1: value1}
     storage[counter] = value;
@@ -33,3 +33,5 @@ var Stack = function() {
 
   return someInstance;
 };
+
+//HI

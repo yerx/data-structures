@@ -24,7 +24,7 @@ var Queue = function() {
     finalSize++;
   };
 
-  // remove the first key value pair in obj
+  // remove the first key value pair in object
 
   someInstance.dequeue = function() {
     // If there is no queue, don't do anything. But if there is, do the following:
