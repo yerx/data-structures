@@ -44,19 +44,31 @@ var LinkedList = function() {
   list.contains = function(target) { // 12
     // define a variable comparingNode = list.head
     var comparingNode = list.head;
-
-    // if list.head.value = target // {head: 99, tail: 99}
-    if (comparingNode.value === target) { // head.value = 99
+    // Check if there are any nodes in the list
+    if (comparingNode === null) {
+      false;
+    } else if (comparingNode.value === target) { // if list.head.value = target // {head: 99, tail: 99} // head.value = 99 //
       return true;
-    } else if (comparingNode === list.tail) { // {head: 99, tail: 99}
-      return false;
-    } else if (comparingNode.next.value === target) {
-      // keep checking node value until node.next = null
-      // recursive call
     }
-
-
-
+    // Check if there is just one node in the list // Node(12)
+    if (comparingNode === list.tail) { // {head: 99, tail: 99}
+      return comparingNode.value === target;
+    }
+    // Define a variable
+    var matchesTarget = false;
+    // If we have two nodes
+    // If the second node.next has a value of null (meaning it is the end of the list)
+    while (comparingNode !== null) { //is comparingNode === list.tail
+      if (comparingNode.value === target) {
+        matchesTarget = true;
+        return matchesTarget;
+      } else {
+        comparingNode = comparingNode.next; // comparingNode = {value: 12, next: Node(99)}
+        // comparingNode = {value: 99, next: null}
+        // comparingNode = null;
+      }
+    }
+    return matchesTarget;
 
   };
 
@@ -74,4 +86,6 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ addToTail and removeHead are O(1), constant time complexity
+ contains is O(n), linear
  */
