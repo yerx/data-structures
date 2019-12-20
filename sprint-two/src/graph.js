@@ -3,11 +3,12 @@
 // Instantiate a new graph
 var Graph = function() {
   this.nodes = [];
+  // this.edges = [];
 };
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
-  node = { value: node, edges: [] };
+  node = { value: node, edges: []};
   this.nodes.push(node);
 };
 
@@ -25,7 +26,8 @@ Graph.prototype.contains = function(node) {
 Graph.prototype.removeNode = function(node) {
   for (var i = 0; i < this.nodes.length; i++) {
     if (this.nodes[i].value === node) {
-
+      this.nodes.splice(i, 1);
+      return;
     }
   }
   // delete node
@@ -37,6 +39,7 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
+
 };
 
 // Remove an edge between any two specified (by value) nodes.

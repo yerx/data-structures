@@ -17,6 +17,7 @@ var treeMethods = {};
 // Take in a value and add a child to the newTree object
 // the value of addChild key is a function that will add a child to newTree directly
 treeMethods.addChild = function(value) {
+  console.log('this', this);
   this.children.push(Tree(value));
   // console.log('this', this);
   // console.log('this kids', this.children);

@@ -34,5 +34,3 @@ class Stack {
 }
 
 var Plates = new Stack();
-
-//HI
