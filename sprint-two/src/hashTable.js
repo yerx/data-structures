@@ -1,5 +1,3 @@
-
-
 var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
@@ -58,7 +56,7 @@ HashTable.prototype.remove = function(k) {
   var bucket = this._storage.get(index);
 
   if ( !bucket ) {
-    return null;
+    return undefined;
   }
 
 
@@ -70,7 +68,7 @@ HashTable.prototype.remove = function(k) {
     }
   }
 
-  return null;
+  return undefined;
 };
 
 
