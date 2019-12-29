@@ -22,21 +22,27 @@ treeMethods.addChild = function(value) {
 
 // Check the newTree object and see if it contains a child that has the target
 treeMethods.contains = function(target) {
-  var matchesTarget = false;
 
-  var findTarget = function(child) {
-    if (child.value === target) {
-      matchesTarget = true;
-      return matchesTarget;
+  if (this.value === target) {
+    return true;
+  }
+
+  for (let i = 0; i < this.children.length; i++) {
+    let childTree = this.children[i];
+    if (childTree.contains(target)) {
+      return true;
     }
-    for (var i = 0; i < child.children.length; i++) {
-      findTarget(child.children[i]);
-    }
-  };
+  }
 
-  findTarget(this);
+  // for ... in loop also works but for ... of loop doesn't
+  // for (var i in this.children) {
+  //   let childTree = this.children[i];
+  //   if (childTree.contains(target)) {
+  //     return true;
+  //   }
+  // }
 
-  return matchesTarget;
+  return false;
 
 };
 

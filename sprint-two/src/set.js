@@ -1,22 +1,20 @@
 var Set = function() {
   var set = Object.create(setPrototype);
-  set._storage = []; // fix me
+  set._storage = {};
   return set;
 };
 
 var setPrototype = {};
 
 setPrototype.add = function(item) {
-  // if the set object does not contain the item, then push
-  if (!this.contains(item)) {
-    this._storage.push(item);
-  }
+  this._storage[item] = item;
 };
 
 setPrototype.contains = function(item) {
-  // iterate through the storage and look for the item
-  for (var i = 0; i < this._storage.length; i++) {
-    if (this._storage[i] === item) {
+
+  for (let i in this._storage) {
+    let value = this._storage[i];
+    if (value === item) {
       return true;
     }
   }
@@ -24,17 +22,17 @@ setPrototype.contains = function(item) {
 };
 
 setPrototype.remove = function(item) {
-  for (var i = 0; i < this._storage.length; i++) {
-    if (this._storage[i] === item) {
-      this._storage.splice(i, 1);
-      break;
+  for (let i in this._storage) {
+    let value = this._storage[i];
+    if (value === item) {
+      delete this._storage[i];
     }
   }
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
- add method is O(n)
- contains is O(n)
- remove is O(n)
+ add O(1)
+ contains O(n)
+ remove O(n)
  */
